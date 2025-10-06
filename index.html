@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy 1 Month 💖</title>
+  <meta name="description" content="A tiny love web app — made with love." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#fff4f8;--bg2:#fde7ef;--ink:#2b2931;--pink:#ff6b9b;--pink2:#ff8fb3;--card:#ffffffcc;--shadow:0 10px 30px rgba(255,107,155,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, var(--bg2), transparent),
+                  radial-gradient(1200px 600px at 120% 10%, var(--bg1), transparent),
+                  linear-gradient(180deg, #fff, var(--bg1));
+      overflow-x:hidden;
+    }
+    header{
+      display:flex; flex-direction:column; align-items:center; text-align:center; gap:.6rem; padding:3.5rem 1rem 2rem;
+    }
+    .script{font-family:"Great Vibes", cursive; font-size: clamp(2.2rem, 7vw, 4rem); color:var(--pink);}
+    .subtitle{font-weight:600; opacity:.85}
+
+    .container{max-width:980px; margin:0 auto; padding:0 16px 60px;}
+
+    .card{
+      background:var(--card); backdrop-filter: blur(6px);
+      border:1px solid #fff6; border-radius:24px; box-shadow: var(--shadow); padding:22px;
+    }
+
+    .gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-top:10px }
+    .gallery figure{position:relative; overflow:hidden; border-radius:16px; aspect-ratio:1/1; margin:0;}
+    .gallery img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease }
+    .gallery figure:hover img{ transform:scale(1.06) }
+
+    .timeline{ position:relative; margin: 18px 0 8px; padding-left:12px }
+    .timeline:before{ content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--pink),transparent) }
+    .tl-item{ position:relative; margin:14px 0 14px 16px; padding-left:12px }
+    .tl-item:before{ content:""; position:absolute; left:-22px; top:.35em; width:10px; height:10px; border-radius:999px; background:var(--pink); box-shadow:0 0 0 3px #fff }
+    .tl-item time{ font-weight:600; font-size:.95rem; opacity:.9 }
+    .tl-item p{ margin:.25rem 0 0; opacity:.9 }
+
+    .cta{
+      display:inline-flex; align-items:center; gap:.5rem; border:none; cursor:pointer; padding:14px 20px; border-radius:999px;
+      background:linear-gradient(135deg, var(--pink), var(--pink2)); color:#fff; font-weight:700; box-shadow: var(--shadow);
+      transform:translateZ(0); transition: transform .12s ease, box-shadow .2s ease; will-change: transform;
+    }
+    .cta:active{ transform: translateY(2px); box-shadow: 0 5px 15px rgba(255,107,155,.35) }
+    .cta .heart{ font-size:1.25rem; filter: drop-shadow(0 2px 6px rgba(255,107,155,.5)) }
+
+    .bubble{ display:none; margin-top:14px; padding:12px 16px; border-radius:14px; background:#fff; box-shadow: var(--shadow); }
+    .bubble.show{ display:block; animation: pop .25s ease }
+    @keyframes pop{ from{ transform:scale(.98); opacity:0 } to{ transform:scale(1); opacity:1 } }
+
+    .heart-fx{ position: fixed; pointer-events:none; z-index: 9999; font-size: 14px; opacity: .9; will-change: transform, opacity }
+
+    /* clickable hearts for mini-game */
+    .heart-fx-clickable {
+      position: fixed;
+      pointer-events: auto;
+      cursor: pointer;
+      z-index: 9999;
+      font-size: 24px;
+      transition: transform 2.2s linear, opacity .4s ease;
+      user-select: none;
+    }
+
+    @keyframes popHeart {
+      0%   { transform: scale(1) translateY(0); opacity: 1; }
+      30%  { transform: scale(1.6) translateY(-10px); }
+      60%  { transform: scale(1.3) translateY(-20px); }
+      100% { transform: scale(0) translateY(-30px); opacity: 0; }
+    }
+
+    footer{ text-align:center; opacity:.65; font-size:.9rem; padding:34px 0 50px }
+    footer a{ color:var(--pink); font-weight:600; text-decoration:none }
+
+    .badge{ display:inline-block; margin-left:.5rem; padding:2px 8px; font-size:.75rem; border-radius:999px; background:#fff; border:1px dashed #ffb3cc }
+
+    @media (min-width: 800px){ .grid2{ display:grid; grid-template-columns: 1.1fr .9fr; gap:18px } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="script">Happy 1st Month</div>
+    <div class="subtitle">ของเรา — <span id="loveNames">You &amp; Me</span> ✨</div>
+  </header>
+
+  <main class="container">
+    <section class="card grid2">
+      <div>
+        <h2 style="margin:4px 0 8px">A tiny website, made just for you 💞</h2>
+        <p style="opacity:.9; margin:0 0 12px">
+          <strong id="dearName">ที่รัก</strong> ครับ/ค่ะ วันนี้ครบรอบ 1 เดือนแล้วนะ ขอบคุณที่เข้ามาเป็นความอบอุ่นในทุก ๆ วัน
+          เว็บไซต์นี้ทำขึ้นด้วยหัวใจ (และโค้ดนิดหน่อย) เพื่อบอกว่า…
+        </p>
+        <button id="loveBtn" class="cta" aria-label="Send love">
+          <span class="heart">❤️</span>
+          <span>กดหัวใจเพื่ออ่านข้อความลับ</span>
+        </button>
+        <div id="loveMsg" class="bubble" role="status" aria-live="polite"></div>
+        <small class="badge">Hint: กดหลายรอบมีข้อความไม่ซ้ำ 😉</small>
+      </div>
+      <div>
+        <div class="gallery">
+          <figure><img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800&auto=format&fit=crop" alt="memory 1"></figure>
+          <figure><img src="https://images.unsplash.com/photo-1460364157752-926555421a7e?q=80&w=800&auto=format&fit=crop" alt="memory 2"></figure>
+          <figure><img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=800&auto=format&fit=crop" alt="memory 3"></figure>
+          <figure><img src="https://images.unsplash.com/photo-1529336953121-a0c0f4b4e843?q=80&w=800&auto=format&fit=crop" alt="memory 4"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:14px">
+      <h3 style="margin:8px 0 2px">Our Month in Moments</h3>
+      <div class="timeline" id="timeline">
+        <div class="tl-item"><time>Day 1</time><p>เราเริ่มคุยกันแบบจริงจัง 💬</p></div>
+        <div class="tl-item"><time>Day 7</time><p>คาเฟ่แรกด้วยกัน — รูปออกมาน่ารักมาก ☕️📸</p></div>
+        <div class="tl-item"><time>Day 16</time><p>เพลงประจำของเราเริ่มเปิดวน 🎵</p></div>
+        <div class="tl-item"><time>Day 30</time><p>ครบ 1 เดือนแล้ว! ขอบคุณที่อยู่ข้าง ๆ กันนะ 🤍</p></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:14px">
+      <h3 style="margin:8px 0 10px">Mini Game: Catch my ♥</h3>
+      <p style="margin:0 0 10px; opacity:.9">คลิกหัวใจที่ลอยให้ทัน 10 ดวง แล้วข้อความพิเศษจะปรากฏขึ้น!</p>
+      <button id="startGame" class="cta"><span class="heart">💗</span> เริ่มเกม</button>
+      <div id="gameMsg" class="bubble" style="margin-top:10px"></div>
+    </section>
+  </main>
+
+  <footer>
+    Made with ♥ by <span id="fromName">Your Name</span>. 
+    <a href="#" id="dateSpan"></a>
+  </footer>
+
+  <script>
+    const CONFIG = {
+      you: "Feen",
+      dear: "P'Ploy",
+      anniversary: new Date(),
+      messages: [
+        "รักเธอที่สุดในโลกนะ 💖",
+        "ขอบคุณที่ทำให้ทุกวันเป็นวันพิเศษ",
+        "ขอสัญญาว่าจะดูแลและใส่ใจเสมอ",
+        "อยู่ด้วยกันไปนาน ๆ นะ",
+        "You are my favorite notification 🥰",
+        "ทุกยิ้มของเธอ = พลังงานของเรา",
+        "รักเวอร์ชันที่เป็นเธอที่สุดเลย",
+      ]
+    }
+
+    const loveNames = document.getElementById('loveNames');
+    const dearName = document.getElementById('dearName');
+    const fromName = document.getElementById('fromName');
+    const dateSpan = document.getElementById('dateSpan');
+
+    loveNames.textContent = `${CONFIG.you} × ${CONFIG.dear}`;
+    dearName.textContent = CONFIG.dear;
+    fromName.textContent = CONFIG.you;
+    const yyyy = CONFIG.anniversary.getFullYear();
+    const mm = String(CONFIG.anniversary.getMonth()+1).padStart(2,'0');
+    const dd = String(CONFIG.anniversary.getDate()).padStart(2,'0');
+    dateSpan.textContent = `Since ${yyyy}-${mm}-${dd}`;
+
+    const loveBtn = document.getElementById('loveBtn');
+    const loveMsg = document.getElementById('loveMsg');
+
+    function randomItem(arr){ return arr[Math.floor(Math.random()*arr.length)] }
+
+    function spawnHeart(x,y){
+      const el = document.createElement('div');
+      el.className = 'heart-fx';
+      el.textContent = ['❤️','🩷','💖','💗','💕'][Math.floor(Math.random()*5)];
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+      const dx = (Math.random()*2-1) * 40;
+      const dy = 120 + Math.random()*60;
+      const scale = 0.8 + Math.random()*0.8;
+      el.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      document.body.appendChild(el);
+      const duration = 1000 + Math.random()*600;
+      const start = performance.now();
+      requestAnimationFrame(function anim(t){
+        const p = Math.min(1, (t-start)/duration);
+        el.style.transform = `translate(${dx*p}px, ${-dy*p}px) scale(${scale*(1+p*0.2)})`;
+        el.style.opacity = (1-p).toFixed(2);
+        if(p<1) requestAnimationFrame(anim); else el.remove();
+      });
+    }
+
+    loveBtn.addEventListener('click', (e)=>{
+      loveMsg.textContent = randomItem(CONFIG.messages);
+      loveMsg.classList.add('show');
+      const { clientX:x, clientY:y } = e;
+      for(let i=0;i<12;i++) setTimeout(()=>spawnHeart(x,y), i*30);
+    });
+
+    const startGameBtn = document.getElementById('startGame');
+    const gameMsg = document.getElementById('gameMsg');
+    let gameActive = false, score = 0, target = 10;
+
+    function spawnClickableHeart(){
+      const el = document.createElement('div');
+      el.className = 'heart-fx-clickable';
+      el.textContent = '💗';
+      el.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+      el.style.top = '100vh';
+      el.style.transition = 'transform 2.2s linear, opacity .4s ease';
+      document.body.appendChild(el);
+
+      const driftX = (Math.random() * 2 - 1) * 120;
+      requestAnimationFrame(() => {
+        el.style.transform = `translate(${driftX}px, -110vh)`;
+      });
+
+      el.addEventListener('click', () => {
+        el.style.animation = 'popHeart 0.6s ease-out forwards';
+        score++;
+        gameMsg.textContent = `เก็บหัวใจได้ ${score}/${target} ดวง`;
+        gameMsg.classList.add('show');
+        setTimeout(() => el.remove(), 600);
+        if (score >= target) {
+          gameActive = false;
+          gameMsg.textContent = "You win my heart! 💞\nรักมากขึ้นทุกวันเลยนะ!";
+        }
+      });
+
+      setTimeout(() => el.remove(), 2500);
+    }
+
+    startGameBtn.addEventListener('click', () => {
+      if (gameActive) return;
+      gameActive = true;
+      score = 0;
+      gameMsg.textContent = 'จับหัวใจให้ทันนะ!';
+      gameMsg.classList.add('show');
+
+      let spawned = 0;
+      const interval = setInterval(() => {
+        if (!gameActive) { clearInterval(interval); return; }
+        spawnClickableHeart();
+        spawned++;
+        if (spawned > 20) clearInterval(interval);
+      }, 500);
+    });
+
+    const buffer = [];
+    const secret = ['L','O','V','E'];
+    window.addEventListener('keydown',(ev)=>{
+      buffer.push(ev.key.toUpperCase());
+      if(buffer.slice(-secret.length).join('')===secret.join('')){
+        loveMsg.textContent = 'Secret unlocked: I choose you, every single day. 💘';
+        loveMsg.classList.add('show');
+        for(let i=0;i<24;i++) setTimeout(()=>spawnHeart(innerWidth/2, innerHeight/2), i*20);
+      }
+      if(buffer.length>8) buffer.shift();
+    });
+  </script>
+</body>
+</html>
