@@ -1,5 +1,58 @@
 <!DOCTYPE html>
 <html lang="th">
+  <!-- Countdown Overlay -->
+  <div
+    id="countdown-screen"
+    style="
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #ffe2ec, #ffd0e1, #ffb7cf);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      color: #d63384;
+      z-index: 99999;
+    "
+  >
+    <h1
+      style="
+        font-family: 'Great Vibes', cursive;
+        font-size: clamp(2rem, 6vw, 4rem);
+        margin: 0 0 10px;
+      "
+    >
+      Counting down to our day 💞
+    </h1>
+    <div
+      id="countdown"
+      style="font-size: clamp(1.5rem, 5vw, 2.8rem); font-weight: 700"
+    >
+      --
+    </div>
+    <p style="margin-top: 10px; opacity: 0.8">วันที่ 7 ตุลาคม 2568</p>
+    <button
+      id="skipBtn"
+      style="
+        margin-top: 25px;
+        background: linear-gradient(135deg, #ff6b9b, #ff8fb3);
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 12px 26px;
+        border-radius: 999px;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(255, 107, 155, 0.35);
+        transition: all 0.3s ease;
+      "
+    >
+      ⏩ Skip → เข้าหน้าเลย
+    </button>
+  </div>
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -269,9 +322,9 @@
             A tiny website, made just for you 💞
           </h2>
           <p style="opacity: 0.9; margin: 0 0 12px">
-            <strong id="dearName">ที่รัก</strong> ครับ/ค่ะ วันนี้ครบรอบ 1
+            <strong id="dearName">ที่รัก</strong> ครับ วันนี้ครบรอบ 1
             เดือนแล้วนะ ขอบคุณที่เข้ามาเป็นความอบอุ่นในทุก ๆ วัน
-            เว็บไซต์นี้ทำขึ้นด้วยหัวใจ (และโค้ดนิดหน่อย) เพื่อบอกว่า…
+            เว็บไซต์นี้ทำขึ้นด้วยหัวใจ เพื่อบอกว่า…
           </p>
           <button id="loveBtn" class="cta" aria-label="Send love">
             <span class="heart">❤️</span>
@@ -289,25 +342,25 @@
           <div class="gallery">
             <figure>
               <img
-                src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800&auto=format&fit=crop"
+                src="https://ik.imagekit.io/p3rckzurp/547641369_758423967024297_6206515711314007281_n.jpg"
                 alt="memory 1"
               />
             </figure>
             <figure>
               <img
-                src="https://images.unsplash.com/photo-1460364157752-926555421a7e?q=80&w=800&auto=format&fit=crop"
+                src="https://ik.imagekit.io/p3rckzurp/494040571_24439552185631563_7063939233595955501_n.jpg"
                 alt="memory 2"
               />
             </figure>
             <figure>
               <img
-                src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=800&auto=format&fit=crop"
+                src="https://ik.imagekit.io/p3rckzurp/dead-by-daylight-1hg3x.jpg"
                 alt="memory 3"
               />
             </figure>
             <figure>
               <img
-                src="https://images.unsplash.com/photo-1529336953121-a0c0f4b4e843?q=80&w=800&auto=format&fit=crop"
+                src="https://ik.imagekit.io/p3rckzurp/Screenshot%202025-10-06%20221748.png"
                 alt="memory 4"
               />
             </figure>
@@ -319,19 +372,19 @@
         <h3 style="margin: 8px 0 2px">Our Month in Moments</h3>
         <div class="timeline" id="timeline">
           <div class="tl-item">
-            <time>Day 1</time>
-            <p>เราเริ่มคุยกันแบบจริงจัง 💬</p>
+            <span>💗</span>
+            <p>เริ่มคุยจริงจัง คบเป็นแฟน 💕</p>
           </div>
           <div class="tl-item">
-            <time>Day 7</time>
-            <p>คาเฟ่แรกด้วยกัน — รูปออกมาน่ารักมาก ☕️📸</p>
+            <span>💗</span>
+            <p>เล่นเกมด้วยกัน ดูหนังกัน ให้กำลังใจตอนแข่ง 🎮🎵</p>
           </div>
           <div class="tl-item">
-            <time>Day 16</time>
-            <p>เพลงประจำของเราเริ่มเปิดวน 🎵</p>
+            <span>💗</span>
+            <p>ส่งเพลงให้กัน มี voice ให้ชื่นหัวใจ 📞💬</p>
           </div>
           <div class="tl-item">
-            <time>Day 30</time>
+            <span>💗</span>
             <p>ครบ 1 เดือนแล้ว! ขอบคุณที่อยู่ข้าง ๆ กันนะ 🤍</p>
           </div>
         </div>
@@ -506,6 +559,82 @@
         }
         if (buffer.length > 8) buffer.shift();
       });
+
+      // ===== Countdown before showing main site =====
+      const countdownScreen = document.getElementById("countdown-screen");
+      const countdownDisplay = document.getElementById("countdown");
+      const skipBtn = document.getElementById("skipBtn");
+
+      // ตั้งเป้าหมายเวลา (7 ตุลาคม 2568 เวลา 00:00)
+      const targetDate = new Date("2025-10-07T00:00:00+07:00").getTime();
+
+      function hideCountdown() {
+        countdownScreen.style.opacity = "0";
+        setTimeout(() => {
+          countdownScreen.style.display = "none";
+          document.body.style.overflow = "auto";
+        }, 600);
+      }
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        // ✅ ถ้าถึงเวลาแล้ว ให้เข้าสู่หน้าหลักทันที
+        if (diff <= 0) {
+          hideCountdown();
+          clearInterval(countdownTimer);
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+
+        countdownDisplay.textContent = `${days} วัน ${hours} ชม. ${mins} นาที ${secs} วินาที`;
+      }
+
+      // เริ่มนับเวลา
+      updateCountdown();
+      const countdownTimer = setInterval(updateCountdown, 1000);
+
+      // ปุ่ม Skip เพื่อเข้าหน้าเว็บเลย
+      skipBtn.addEventListener("click", hideCountdown);
+
+      // ===== เอฟเฟกต์หัวใจลอยระหว่าง Countdown =====
+      function spawnFloatingHeart() {
+        const heart = document.createElement("div");
+        heart.textContent = ["❤️", "🩷", "💖", "💗", "💕"][
+          Math.floor(Math.random() * 5)
+        ];
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-30px";
+        heart.style.fontSize = 18 + Math.random() * 22 + "px";
+        heart.style.opacity = 0.6 + Math.random() * 0.4;
+        heart.style.pointerEvents = "none";
+        heart.style.transition = "transform 8s linear, opacity 2s ease";
+        heart.style.zIndex = 0;
+        countdownScreen.appendChild(heart);
+
+        const driftX = (Math.random() * 2 - 1) * 50;
+        requestAnimationFrame(() => {
+          heart.style.transform = `translate(${driftX}px, -110vh)`;
+          heart.style.opacity = "0";
+        });
+
+        setTimeout(() => heart.remove(), 8000);
+      }
+
+      // สร้างหัวใจลอยทุก ๆ 600 มิลลิวินาที
+      const floatingHeartInterval = setInterval(() => {
+        if (countdownScreen.style.display === "none") {
+          clearInterval(floatingHeartInterval);
+          return;
+        }
+        spawnFloatingHeart();
+      }, 600);
     </script>
   </body>
 </html>
