@@ -420,8 +420,14 @@
       loveBtn.addEventListener("click", (e) => {
         loveMsg.textContent = randomItem(CONFIG.messages);
         loveMsg.classList.add("show");
-        const { clientX: x, clientY: y } = e;
-        for (let i = 0; i < 12; i++) setTimeout(() => spawnHeart(x, y), i * 30);
+
+        // ✅ ตรวจว่ามีค่า clientX/Y หรือไม่ (กรณีมือถือ)
+        let x = e.clientX || window.innerWidth / 2;
+        let y = e.clientY || window.innerHeight / 2;
+
+        for (let i = 0; i < 12; i++) {
+          setTimeout(() => spawnHeart(x, y), i * 30);
+        }
       });
 
       // ==== มินิเกมหัวใจ ====
